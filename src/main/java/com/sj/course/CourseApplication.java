@@ -19,11 +19,12 @@ public class CourseApplication {
   @Bean
   public CommandLineRunner commandLineRunner(StudentDao studentDao) {
     return runner -> {
+      final UUID id = UUID.fromString("2cd61cf1-5ab8-4069-a361-0ac4a2124723");
       //createStudent(studentDao);
-      getStudentById(studentDao, UUID.fromString("c090c32f-cf19-49d0-a651-ae34d20154a4"));
+      getStudentById(studentDao, id);
       getAllStudents(studentDao);
       getStudentsByLastName(studentDao, "Doe");
-      updateStudentUsingJpa(studentDao);
+      updateStudentUsingJpa(studentDao, id);
     };
   }
 
@@ -58,11 +59,11 @@ public class CourseApplication {
     return studentDao.findByLastName(lastName);
   }
 
-  private void updateStudentUsingJpa(StudentDao studentDao) {
+  private void updateStudentUsingJpa(StudentDao studentDao, final UUID id) {
     //find the student to update
     final Student getStudent = getStudentById(
         studentDao,
-        UUID.fromString("c090c32f-cf19-49d0-a651-ae34d20154a4")
+        id
     );
 
     //change last name
