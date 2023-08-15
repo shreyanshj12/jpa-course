@@ -8,3 +8,6 @@
     - Choose `Optimize imports, rearrange entries and cleanup code`.
     - Click on the `OK` button.
 - If checkstyle build is successful, you can commit your code and create PR.
+
+### Run application
+- Run your SpringBootApplication and go to url: localhost:8088/dailyworkout
