@@ -1,6 +1,7 @@
 package com.sj.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +12,7 @@ public class DemoController {
   private final Coach coach;
 
   @Autowired //optional bcz we've only 1 constructor
-  public DemoController(final Coach coach) {
+  public DemoController(@Qualifier("runningCoach") final Coach coach) {
     this.coach = coach;
   }
 
@@ -22,7 +23,7 @@ public class DemoController {
 
   // Step 2: Inject dependencies by calling any method on your class, simply give @Autowired
   @Autowired
-  public void randomMethodName(final Coach coach) {
+  public void randomMethodName(@Qualifier("runningCoach") final Coach coach) {
     this.coach = coach;
   }
   */
